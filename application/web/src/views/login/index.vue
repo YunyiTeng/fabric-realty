@@ -77,9 +77,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$bg:#2d3a4b;
-$dark_gray:#889aa4;
-$light_gray:#eee;
+$bg:#2d3a4b00;
+$dark_gray:#889aa400;
+$light_gray:#eeeeee00;
 
 .login-container {
   min-height: 100%;
@@ -107,7 +107,7 @@ $light_gray:#eee;
   }
   .tips {
     font-size: 14px;
-    color: #fff;
+    color: #ffffff00;
     margin-bottom: 10px;
 
     span {
