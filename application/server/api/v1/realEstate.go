@@ -17,6 +17,7 @@ type RealEstateRequestBody struct {
 	Proprietor  string  `json:"proprietor"`  //所有者(业主)(业主AccountId)
 	TotalArea   float64 `json:"totalArea"`   //总面积
 	LivingSpace float64 `json:"livingSpace"` //生活空间
+	CourseName	string	`json:"courseName`   //课程名称(added)
 }
 
 type RealEstateQueryRequestBody struct {
@@ -40,6 +41,7 @@ func CreateRealEstate(c *gin.Context) {
 	bodyBytes = append(bodyBytes, []byte(body.Proprietor))
 	bodyBytes = append(bodyBytes, []byte(strconv.FormatFloat(body.TotalArea, 'E', -1, 64)))
 	bodyBytes = append(bodyBytes, []byte(strconv.FormatFloat(body.LivingSpace, 'E', -1, 64)))
+	bodyBytes = append(bodyBytes, []byte(body.CourseName))
 	//调用智能合约
 	resp, err := bc.ChannelExecute("createRealEstate", bodyBytes)
 	if err != nil {

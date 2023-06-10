@@ -14,13 +14,14 @@ import (
 // CreateRealEstate 新建房地产(管理员)
 func CreateRealEstate(stub shim.ChaincodeStubInterface, args []string) pb.Response {
 	// 验证参数
-	if len(args) != 4 {
+	if len(args) != 5 {
 		return shim.Error("参数个数不满足")
 	}
 	accountId := args[0] //accountId用于验证是否为管理员
 	proprietor := args[1]
 	totalArea := args[2]
 	livingSpace := args[3]
+	courseName := args[4]
 	if accountId == "" || proprietor == "" || totalArea == "" || livingSpace == "" {
 		return shim.Error("参数存在空值")
 	}
@@ -63,6 +64,7 @@ func CreateRealEstate(stub shim.ChaincodeStubInterface, args []string) pb.Respon
 		Encumbrance:  false,
 		TotalArea:    formattedTotalArea,
 		LivingSpace:  formattedLivingSpace,
+		CourseName:   courseName,
 	}
 	// 写入账本
 	if err := utils.WriteLedger(realEstate, stub, model.RealEstateKey, []string{realEstate.Proprietor, realEstate.RealEstateID}); err != nil {

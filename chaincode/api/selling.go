@@ -15,14 +15,17 @@ import (
 // CreateSelling 发起销售
 func CreateSelling(stub shim.ChaincodeStubInterface, args []string) pb.Response {
 	// 验证参数
-	if len(args) != 4 {
+	if len(args) != 7 {
 		return shim.Error("参数个数不满足")
 	}
 	objectOfSale := args[0]
 	seller := args[1]
 	price := args[2]
 	salePeriod := args[3]
-	if objectOfSale == "" || seller == "" || price == "" || salePeriod == "" {
+	selleeTotalArea := args[4]
+	selleeLivingSpace := args[5]
+	selleeCourseName := args[6]
+	if objectOfSale == "" || seller == "" || price == "" || salePeriod == "" || selleeTotalArea == "" || selleeLivingSpace == "0" || selleeCourseName == "0" {
 		return shim.Error("参数存在空值")
 	}
 	// 参数数据格式转换
@@ -31,6 +34,18 @@ func CreateSelling(stub shim.ChaincodeStubInterface, args []string) pb.Response 
 		return shim.Error(fmt.Sprintf("price参数格式转换出错: %s", err))
 	} else {
 		formattedPrice = val
+	}
+	var formattedSelleeTotalArea float64
+	if val, err := strconv.ParseFloat(selleeTotalArea, 64); err != nil {
+		return shim.Error(fmt.Sprintf("TotalArea参数格式转换出错: %s", err))
+	} else {
+		formattedSelleeTotalArea = val
+	}
+	var formattedSelleeLivingSpace float64
+	if val, err := strconv.ParseFloat(selleeLivingSpace, 64); err != nil {
+		return shim.Error(fmt.Sprintf("LivingSpace参数格式转换出错: %s", err))
+	} else {
+		formattedSelleeLivingSpace = val
 	}
 	var formattedSalePeriod int
 	if val, err := strconv.Atoi(salePeriod); err != nil {
@@ -61,6 +76,9 @@ func CreateSelling(stub shim.ChaincodeStubInterface, args []string) pb.Response 
 		CreateTime:    time.Unix(int64(createTime.GetSeconds()), int64(createTime.GetNanos())).Local().Format("2006-01-02 15:04:05"),
 		SalePeriod:    formattedSalePeriod,
 		SellingStatus: model.SellingStatusConstant()["saleStart"],
+		SelleeTotalArea:    formattedSelleeTotalArea,           //被销售的总面积, 对应修改后为学分
+		SelleeLivingSpace:  formattedSelleeLivingSpace,         //被销售的生活面积, 对应修改后为成绩
+		SelleeCourseName:   selleeCourseName,                   //被销售的courseName, 对应修改后为课程名
 	}
 	// 写入账本
 	if err := utils.WriteLedger(selling, stub, model.SellingKey, []string{selling.Seller, selling.ObjectOfSale}); err != nil {

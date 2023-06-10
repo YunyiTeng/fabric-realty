@@ -15,6 +15,9 @@
           </el-option>
         </el-select>
       </el-form-item>
+      <el-form-item label="课程名称" prop="courseName">
+        <el-input v-model="ruleForm.courseName"></el-input>
+      </el-form-item>
       <el-form-item label="课程学分" prop="totalArea">
         <el-input-number v-model="ruleForm.totalArea" :precision="2" :step="0.1" :min="0" />
       </el-form-item>
@@ -48,7 +51,8 @@ export default {
       ruleForm: {
         proprietor: '',
         totalArea: 0,
-        livingSpace: 0
+        livingSpace: 0,
+        courseName: ''
       },
       accountList: [],
       rules: {
@@ -94,7 +98,8 @@ export default {
               accountId: this.accountId,
               proprietor: this.ruleForm.proprietor,
               totalArea: this.ruleForm.totalArea,
-              livingSpace: this.ruleForm.livingSpace
+              livingSpace: this.ruleForm.livingSpace,
+              courseName: this.ruleForm.courseName
             }).then(response => {
               this.loading = false
               if (response !== null) {

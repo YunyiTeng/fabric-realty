@@ -19,47 +19,51 @@
       <el-col v-for="(val,index) in realEstateList" :key="index" :span="6" :offset="1">
         <el-card class="realEstate-card">
           <div slot="header" class="clearfix">
-            担保状态:
+            装逼状态:
             <span style="color: rgb(255, 0, 0);">{{ val.encumbrance }}</span>
           </div>
 
           <div class="item">
-            <el-tag>房产ID: </el-tag>
+            <el-tag>成绩单ID: </el-tag>
             <span>{{ val.realEstateId }}</span>
           </div>
           <div class="item">
-            <el-tag type="success">业主ID: </el-tag>
+            <el-tag type="success">学生ID: </el-tag>
             <span>{{ val.proprietor }}</span>
           </div>
           <div class="item">
-            <el-tag type="warning">总空间: </el-tag>
-            <span>{{ val.totalArea }} ㎡</span>
+            <el-tag type="warning">课程名称: </el-tag>
+            <span>{{ val.courseName }}</span>
           </div>
           <div class="item">
-            <el-tag type="danger">居住空间: </el-tag>
-            <span>{{ val.livingSpace }} ㎡</span>
+            <el-tag type="warning">课程学分: </el-tag>
+            <span>{{ val.totalArea }}</span>
+          </div>
+          <div class="item">
+            <el-tag type="danger">课程成绩: </el-tag>
+            <span>{{ val.livingSpace }}</span>
           </div>
 
           <div v-if="!val.encumbrance&&roles[0] !== 'admin'">
-            <el-button type="text" @click="openDialog(val)">出售</el-button>
-            <el-divider direction="vertical" />
-            <el-button type="text" @click="openDonatingDialog(val)">捐赠</el-button>
+            <el-button type="text" @click="openDialog(val)">我要装逼!</el-button>
+            <!-- <el-divider direction="vertical" />
+            <el-button type="text" @click="openDonatingDialog(val)">捐赠</el-button> -->
           </div>
-          <el-rate v-if="roles[0] === 'admin'" />
+          <!-- <el-rate v-if="roles[0] === 'admin'" /> -->
         </el-card>
       </el-col>
     </el-row>
     <el-dialog v-loading="loadingDialog" :visible.sync="dialogCreateSelling" :close-on-click-modal="false" @close="resetForm('realForm')">
-      <el-form ref="realForm" :model="realForm" :rules="rules" label-width="100px">
-        <el-form-item label="价格 (元)" prop="price">
+      <el-form ref="realForm" :model="realForm" :rules="rules" label-width="120px">
+        <!-- <el-form-item label="价格 (元)" prop="price">
           <el-input-number v-model="realForm.price" :precision="2" :step="10000" :min="0" />
-        </el-form-item>
-        <el-form-item label="有效期 (天)" prop="salePeriod">
+        </el-form-item> -->
+        <el-form-item label="装逼有效期 (天)" prop="salePeriod">
           <el-input-number v-model="realForm.salePeriod" :min="1" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="createSelling('realForm')">立即出售</el-button>
+        <el-button type="primary" @click="createSelling('realForm')">立即装逼</el-button>
         <el-button @click="dialogCreateSelling = false">取 消</el-button>
       </div>
     </el-dialog>
@@ -183,7 +187,7 @@ export default {
     createSelling(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          this.$confirm('是否立即出售?', '提示', {
+          this.$confirm('是否立即装逼?', '提示', {
             confirmButtonText: '确定',
             cancelButtonText: '取消',
             type: 'success'
@@ -192,20 +196,23 @@ export default {
             createSelling({
               objectOfSale: this.valItem.realEstateId,
               seller: this.valItem.proprietor,
-              price: this.realForm.price,
-              salePeriod: this.realForm.salePeriod
+              price: 114514,
+              salePeriod: this.realForm.salePeriod,
+              selleeTotalArea: this.valItem.totalArea,
+	            selleeLivingSpace: this.valItem.livingSpace,
+	            selleeCourseName: this.valItem.courseName
             }).then(response => {
               this.loadingDialog = false
               this.dialogCreateSelling = false
               if (response !== null) {
                 this.$message({
                   type: 'success',
-                  message: '出售成功!'
+                  message: '装逼成功!'
                 })
               } else {
                 this.$message({
                   type: 'error',
-                  message: '出售失败!'
+                  message: '装逼失败!'
                 })
               }
               setTimeout(() => {
@@ -220,7 +227,7 @@ export default {
             this.dialogCreateSelling = false
             this.$message({
               type: 'info',
-              message: '已取消出售'
+              message: '已取消装逼'
             })
           })
         } else {
@@ -313,7 +320,7 @@ export default {
 
   .realEstate-card {
     width: 280px;
-    height: 340px;
+    height: 380px;
     margin: 18px;
   }
 </style>

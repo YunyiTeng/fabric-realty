@@ -12,6 +12,9 @@ type Selling struct {
 	CreateTime    string  `json:"createTime"`    //创建时间
 	SalePeriod    int     `json:"salePeriod"`    //智能合约的有效期(单位为天)
 	SellingStatus string  `json:"sellingStatus"` //销售状态
+	SelleeTotalArea		float64	`json: "totalArea"`	 //被销售的总面积, 对应修改后为学分
+	SelleeLivingSpace	float64	`json: "livingSpace"`//被销售的生活面积, 对应修改后为成绩
+	SelleeCourseName	string	`json: "courseName"` //被销售的courseName, 对应修改后为课程名
 }
 
 // SellingStatusConstant 销售状态
