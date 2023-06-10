@@ -2,8 +2,8 @@
   <div class="app-container">
     <el-form ref="ruleForm" v-loading="loading" :model="ruleForm" :rules="rules" label-width="100px">
 
-      <el-form-item label="业主" prop="proprietor">
-        <el-select v-model="ruleForm.proprietor" placeholder="请选择业主" @change="selectGet">
+      <el-form-item label="学生" prop="proprietor">
+        <el-select v-model="ruleForm.proprietor" placeholder="请选择学生" @change="selectGet">
           <el-option
             v-for="item in accountList"
             :key="item.accountId"
@@ -15,15 +15,15 @@
           </el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="总空间 ㎡" prop="totalArea">
+      <el-form-item label="课程学分" prop="totalArea">
         <el-input-number v-model="ruleForm.totalArea" :precision="2" :step="0.1" :min="0" />
       </el-form-item>
-      <el-form-item label="居住空间 ㎡" prop="livingSpace">
+      <el-form-item label="课程成绩" prop="livingSpace">
         <el-input-number v-model="ruleForm.livingSpace" :precision="2" :step="0.1" :min="0" />
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
-        <el-button @click="resetForm('ruleForm')">重置</el-button>
+        <el-button type="primary" @click="submitForm('ruleForm')">登入系统!</el-button>
+        <el-button @click="resetForm('ruleForm')">重置!</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -53,7 +53,7 @@ export default {
       accountList: [],
       rules: {
         proprietor: [
-          { required: true, message: '请选择业主', trigger: 'change' }
+          { required: true, message: '请选择学生!', trigger: 'change' }
         ],
         totalArea: [
           { validator: checkArea, trigger: 'blur' }
@@ -84,7 +84,7 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          this.$confirm('是否立即创建?', '提示', {
+          this.$confirm('是否立即登入系统?', '提示', {
             confirmButtonText: '确定',
             cancelButtonText: '取消',
             type: 'success'
@@ -100,12 +100,12 @@ export default {
               if (response !== null) {
                 this.$message({
                   type: 'success',
-                  message: '创建成功!'
+                  message: '登入系统成功!'
                 })
               } else {
                 this.$message({
                   type: 'error',
-                  message: '创建失败!'
+                  message: '登入系统失败!'
                 })
               }
             }).catch(_ => {
@@ -115,7 +115,7 @@ export default {
             this.loading = false
             this.$message({
               type: 'info',
-              message: '已取消创建'
+              message: '已取消登入系统'
             })
           })
         } else {

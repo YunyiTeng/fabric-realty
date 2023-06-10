@@ -31,8 +31,8 @@ func CreateRealEstate(c *gin.Context) {
 		appG.Response(http.StatusBadRequest, "失败", fmt.Sprintf("参数出错%s", err.Error()))
 		return
 	}
-	if body.TotalArea <= 0 || body.LivingSpace <= 0 || body.LivingSpace > body.TotalArea {
-		appG.Response(http.StatusBadRequest, "失败", "TotalArea总面积和LivingSpace生活空间必须大于0，且生活空间小于等于总面积")
+	if body.TotalArea <= 0 || body.LivingSpace <= 0 {
+		appG.Response(http.StatusBadRequest, "失败", "成绩和学分不能小于0！")
 		return
 	}
 	var bodyBytes [][]byte
