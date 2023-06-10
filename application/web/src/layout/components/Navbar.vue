@@ -7,7 +7,7 @@
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
-          <img :src="'https://s1.ax1x.com/2020/03/18/8w2Z2F.jpg'" class="user-avatar">
+          <img :src="'https://pic2.zhimg.com/179d2efe20983c76c1eeb2f19aa99fc2_xs.jpg'" class="user-avatar">
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
@@ -20,11 +20,11 @@
           <el-dropdown-item>
             余额: ￥{{ balance }} 元
           </el-dropdown-item>
-          <a target="_blank" href="https://github.com/togettoyou/fabric-realty">
+          <a target="_blank" href="https://github.com/YunyiTeng/fabric-realty">
             <el-dropdown-item>项目地址</el-dropdown-item>
           </a>
           <el-dropdown-item divided @click.native="logout">
-            <span style="display:block;">切换账户</span>
+            <span style="display:block;">切换账号!</span>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>

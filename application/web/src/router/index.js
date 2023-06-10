@@ -51,8 +51,8 @@ export const constantRoutes = [{
     name: 'Realestate',
     component: () => import('@/views/realestate/list/index'),
     meta: {
-      title: '房产信息',
-      icon: 'realestate'
+      title: '成绩信息!',
+      icon: 'https://eu4.paradoxwikis.com/images/d/d3/Casus_belli.png'
     }
   }]
 }
@@ -70,16 +70,16 @@ export const asyncRoutes = [
     name: 'Selling',
     alwaysShow: true,
     meta: {
-      title: '销售',
-      icon: 'selling'
+      title: '我要装逼!',
+      icon: 'https://eu4.paradoxwikis.com/images/c/cd/May_slander_merchants.png'
     },
     children: [{
       path: 'all',
       name: 'SellingAll',
       component: () => import('@/views/selling/all/index'),
       meta: {
-        title: '所有销售',
-        icon: 'sellingAll'
+        title: '装逼广场!',
+        icon: 'https://eu4.paradoxwikis.com/images/5/54/Cb_on_overseas.png'
       }
     },
     {
@@ -88,61 +88,62 @@ export const asyncRoutes = [
       component: () => import('@/views/selling/me/index'),
       meta: {
         roles: ['editor'],
-        title: '我发起的',
-        icon: 'sellingMe'
-      }
-    }, {
-      path: 'buy',
-      name: 'SellingBuy',
-      component: () => import('@/views/selling/buy/index'),
-      meta: {
-        roles: ['editor'],
-        title: '我购买的',
-        icon: 'sellingBuy'
+        title: '我发起的!',
+        icon: 'https://eu4.paradoxwikis.com/images/a/af/Monthly_splendor.png'
       }
     }
+    // {
+    //   path: 'buy',
+    //   name: 'SellingBuy',
+    //   component: () => import('@/views/selling/buy/index'),
+    //   meta: {
+    //     roles: ['editor'],
+    //     title: '我购买的',
+    //     icon: 'sellingBuy'
+    //   }
+    // }
     ]
   },
-  {
-    path: '/donating',
-    component: Layout,
-    redirect: '/donating/all',
-    name: 'Donating',
-    alwaysShow: true,
-    meta: {
-      title: '捐赠',
-      icon: 'donating'
-    },
-    children: [{
-      path: 'all',
-      name: 'DonatingAll',
-      component: () => import('@/views/donating/all/index'),
-      meta: {
-        title: '所有捐赠',
-        icon: 'donatingAll'
-      }
-    },
-    {
-      path: 'donor',
-      name: 'DonatingDonor',
-      component: () => import('@/views/donating/donor/index'),
-      meta: {
-        roles: ['editor'],
-        title: '我发起的捐赠',
-        icon: 'donatingDonor'
-      }
-    }, {
-      path: 'grantee',
-      name: 'DonatingGrantee',
-      component: () => import('@/views/donating/grantee/index'),
-      meta: {
-        roles: ['editor'],
-        title: '我收到的受赠',
-        icon: 'donatingGrantee'
-      }
-    }
-    ]
-  },
+  // {
+  //   path: '/donating',
+  //   component: Layout,
+  //   redirect: '/donating/all',
+  //   name: 'Donating',
+  //   alwaysShow: true,
+  //   meta: {
+  //     title: '捐赠',
+  //     icon: 'donating'
+  //   },
+  //   children: [{
+  //     path: 'all',
+  //     name: 'DonatingAll',
+  //     component: () => import('@/views/donating/all/index'),
+  //     meta: {
+  //       title: '所有捐赠',
+  //       icon: 'donatingAll'
+  //     }
+  //   },
+  //   {
+  //     path: 'donor',
+  //     name: 'DonatingDonor',
+  //     component: () => import('@/views/donating/donor/index'),
+  //     meta: {
+  //       roles: ['editor'],
+  //       title: '我发起的捐赠',
+  //       icon: 'donatingDonor'
+  //     }
+  //   }, {
+  //     path: 'grantee',
+  //     name: 'DonatingGrantee',
+  //     component: () => import('@/views/donating/grantee/index'),
+  //     meta: {
+  //       roles: ['editor'],
+  //       title: '我收到的受赠',
+  //       icon: 'donatingGrantee'
+  //     }
+  //   }
+  //   ]
+  // },
   {
     path: '/addRealestate',
     component: Layout,
@@ -154,8 +155,8 @@ export const asyncRoutes = [
       name: 'AddRealestate',
       component: () => import('@/views/realestate/add/index'),
       meta: {
-        title: '新增房产',
-        icon: 'addRealestate'
+        title: '新增学生成绩!',
+        icon: 'https://eu4.paradoxwikis.com/images/4/42/Possible_advisors.png'
       }
     }]
   },

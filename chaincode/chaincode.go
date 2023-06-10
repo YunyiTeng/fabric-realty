@@ -18,16 +18,15 @@ type BlockChainRealEstate struct {
 func (t *BlockChainRealEstate) Init(stub shim.ChaincodeStubInterface) pb.Response {
 	fmt.Println("链码初始化")
 	//初始化默认数据
-	var accountIds = [6]string{
-		"5feceb66ffc8",
-		"6b86b273ff34",
-		"d4735e3a265e",
-		"4e07408562be",
-		"4b227777d4dd",
-		"ef2d127de37b",
+	var accountIds = [5]string{
+		"0000fee1dead",
+		"114514191981",
+		"233333abcdef",
+		"dead14530529",
+		"f020230610c7",
 	}
-	var userNames = [6]string{"管理员", "①号业主", "②号业主", "③号业主", "④号业主", "⑤号业主"}
-	var balances = [6]float64{0, 5000000, 5000000, 5000000, 5000000, 5000000}
+	var userNames = [5]string{"管理员", "学生-李田所", "学生-德川", "学生-淳平", "学生-我修院"}
+	var balances = [5]float64{0, 5000000, 5000000, 5000000, 5000000}
 	//初始化账号数据
 	for i, val := range accountIds {
 		account := &model.Account{

@@ -6,8 +6,8 @@
       <p>账户ID: {{ accountId }}</p>
       <p>用户名: {{ userName }}</p>
       <p>余额: ￥{{ balance }} 元</p>
-      <p>当发起出售、捐赠或质押操作后，担保状态为true</p>
-      <p>当担保状态为false时，才可发起出售、捐赠或质押操作</p>
+      <p>当发起装逼操作后，装逼状态为true</p>
+      <p>当装逼状态为false时，才可发起装逼</p>
     </el-alert>
     <div v-if="realEstateList.length==0" style="text-align: center;">
       <el-alert

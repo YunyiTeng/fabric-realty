@@ -24,8 +24,8 @@ export default {
   },
   data() {
     return {
-      title: '基于区块链的房地产交易系统',
-      logo: 'https://s1.ax1x.com/2020/03/18/8w22rj.png'
+      title: '基于区块链的成绩登记与查询系统',
+      logo: 'https://eu4.paradoxwikis.com/images/7/7e/Icon_diplomacy_favors.png'
     }
   }
 }
