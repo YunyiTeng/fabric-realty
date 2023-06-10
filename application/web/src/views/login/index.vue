@@ -3,9 +3,9 @@
     <el-form ref="loginForm" class="login-form" auto-complete="on" label-position="left">
 
       <div class="title-container">
-        <h3 class="title">基于区块链的成绩登记系统</h3>
+        <h3 class="title">基于区块链的成绩登记与查询系统</h3>
       </div>
-      <el-select v-model="value" placeholder="请选择用户角色" class="login-select" @change="selectGet">
+      <el-select style="margin-top: 60%; border-color: #ffffff00;" v-model="value" placeholder="请选择用户角色" class="login-select" @change="selectGet">
         <el-option
           v-for="item in accountList"
           :key="item.accountId"
@@ -13,11 +13,11 @@
           :value="item.accountId"
         >
           <span style="float: left">{{ item.userName }}</span>
-          <span style="float: right; color: #8492a6; font-size: 13px">{{ item.accountId }}</span>
+          <span style="float: right; color: #8492a6; font-size: 14px">{{ item.accountId }}</span>
         </el-option>
       </el-select>
 
-      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">立即进入</el-button>
+      <el-button :loading="loading" type="primary" style="width:100%; margin-bottom:30px; background-color: #00000060; border-color: #ffffff;  box-shadow: rgba(0, 0, 0, 0.5) 5px 10px 10px;" @click.native.prevent="handleLogin">立即进入</el-button>
 
       <div class="tips">
         <span style="margin-right:20px;">tips: 可以选择不同用户角色体验过程</span>
@@ -79,7 +79,7 @@ export default {
 <style lang="scss" scoped>
 $bg:#2d3a4b00;
 $dark_gray:#889aa400;
-$light_gray:#eeeeee00;
+$white:#eeeeee;
 
 .login-container {
   min-height: 100%;
@@ -97,6 +97,7 @@ $light_gray:#eeeeee00;
     margin: 0 auto;
     overflow: hidden;
   }
+
   .login-select{
    padding: 20px 0px 30px 0px;
    min-height: 100%;
@@ -104,6 +105,11 @@ $light_gray:#eeeeee00;
    background-color: $bg;
    overflow: hidden;
    text-align: center;
+  }
+  .login-select:focus,
+  .login-select:active {
+  /* Styles for when the select is pressed */
+  border-color: #ffffff;
   }
   .tips {
     font-size: 14px;
@@ -130,7 +136,7 @@ $light_gray:#eeeeee00;
 
     .title {
       font-size: 26px;
-      color: $light_gray;
+      color: $white;
       margin: 0px auto 40px auto;
       text-align: center;
       font-weight: bold;
