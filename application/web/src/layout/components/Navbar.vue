@@ -17,9 +17,9 @@
           <el-dropdown-item>
             用户名: {{ userName }}
           </el-dropdown-item>
-          <el-dropdown-item>
+          <!-- <el-dropdown-item>
             余额: ￥{{ balance }} 元
-          </el-dropdown-item>
+          </el-dropdown-item> -->
           <a target="_blank" href="https://github.com/YunyiTeng/fabric-realty">
             <el-dropdown-item>项目地址</el-dropdown-item>
           </a>

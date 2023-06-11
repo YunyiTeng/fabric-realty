@@ -5,7 +5,7 @@
     >
       <p>账户ID: {{ accountId }}</p>
       <p>用户名: {{ userName }}</p>
-      <p>余额: ￥{{ balance }} 元</p>
+      <!-- <p>余额: ￥{{ balance }} 元</p> -->
     </el-alert>
     <div v-if="sellingList.length==0" style="text-align: center;">
       <el-alert
@@ -17,35 +17,43 @@
       <el-col v-for="(val,index) in sellingList" :key="index" :span="6" :offset="1">
         <el-card class="me-card">
           <div slot="header" class="clearfix">
-            <span>{{ val.sellingStatus }}</span>
+            <span>{{ val.SelleeCourseName }}</span>
             <el-button v-if="val.sellingStatus!=='完成'&&val.sellingStatus!=='已过期'&&val.sellingStatus!=='已取消'" style="float: right; padding: 3px 0" type="text" @click="updateSelling(val,'cancelled')">取消</el-button>
             <el-button v-if="val.sellingStatus==='交付中'" style="float: right; padding: 3px 8px" type="text" @click="updateSelling(val,'done')">确认收款</el-button>
           </div>
           <div class="item">
-            <el-tag>房产ID: </el-tag>
+            <el-tag>成绩单ID: </el-tag>
             <span>{{ val.objectOfSale }}</span>
           </div>
           <div class="item">
-            <el-tag type="success">销售者ID: </el-tag>
+            <el-tag type="success">装逼者ID: </el-tag>
             <span>{{ val.seller }}</span>
           </div>
-          <div class="item">
+          <!-- <div class="item">
             <el-tag type="danger">价格: </el-tag>
             <span>￥{{ val.price }} 元</span>
+          </div> -->
+          <div class="item">
+            <el-tag type="warning">课程学分: </el-tag>
+            <span>{{ val.SelleeTotalArea }}</span>
           </div>
           <div class="item">
-            <el-tag type="warning">有效期: </el-tag>
+            <el-tag type="danger">课程成绩: </el-tag>
+            <span>{{ val.SelleeLivingSpace }}</span>
+          </div>
+          <div class="item">
+            <el-tag type="info">有效期: </el-tag>
             <span>{{ val.salePeriod }} 天</span>
           </div>
           <div class="item">
             <el-tag type="info">创建时间: </el-tag>
             <span>{{ val.createTime }}</span>
           </div>
-          <div class="item">
+          <!-- <div class="item">
             <el-tag>购买者ID: </el-tag>
             <span v-if="val.buyer===''">虚位以待</span>
             <span>{{ val.buyer }}</span>
-          </div>
+          </div> -->
         </el-card>
       </el-col>
     </el-row>

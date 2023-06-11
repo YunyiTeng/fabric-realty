@@ -5,7 +5,7 @@
     >
       <p>账户ID: {{ accountId }}</p>
       <p>用户名: {{ userName }}</p>
-      <p>余额: ￥{{ balance }} 元</p>
+      <!-- <p>余额: ￥{{ balance }} 元</p> -->
     </el-alert>
     <div v-if="sellingList.length==0" style="text-align: center;">
       <el-alert
