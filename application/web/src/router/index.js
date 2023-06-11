@@ -52,7 +52,7 @@ export const constantRoutes = [{
     component: () => import('@/views/realestate/list/index'),
     meta: {
       title: '成绩信息!',
-      icon: 'https://eu4.paradoxwikis.com/images/d/d3/Casus_belli.png'
+      icon:  'Casus_belli'
     }
   }]
 }
@@ -71,7 +71,7 @@ export const asyncRoutes = [
     alwaysShow: true,
     meta: {
       title: '我要装逼!',
-      icon: 'https://eu4.paradoxwikis.com/images/c/cd/May_slander_merchants.png'
+      icon: 'May_slander_merchants'
     },
     children: [{
       path: 'all',
@@ -79,7 +79,7 @@ export const asyncRoutes = [
       component: () => import('@/views/selling/all/index'),
       meta: {
         title: '装逼广场!',
-        icon: 'https://eu4.paradoxwikis.com/images/5/54/Cb_on_overseas.png'
+        icon: 'Cb_on_overseas'
       }
     },
     {
@@ -89,7 +89,7 @@ export const asyncRoutes = [
       meta: {
         roles: ['editor'],
         title: '我发起的!',
-        icon: 'https://eu4.paradoxwikis.com/images/a/af/Monthly_splendor.png'
+        icon: 'Monthly_splendor'
       }
     }
     // {
@@ -156,7 +156,7 @@ export const asyncRoutes = [
       component: () => import('@/views/realestate/add/index'),
       meta: {
         title: '新增学生成绩!',
-        icon: 'https://eu4.paradoxwikis.com/images/4/42/Possible_advisors.png'
+        icon: 'Possible_advisors'
       }
     }]
   },
