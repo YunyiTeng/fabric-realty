@@ -64,6 +64,9 @@ export default {
         ],
         livingSpace: [
           { validator: checkArea, trigger: 'blur' }
+        ],
+        courseName: [
+          { required: true }
         ]
       },
       loading: false
@@ -139,4 +142,7 @@ export default {
 </script>
 
 <style scoped>
+.align-left {
+  text-align: left;
+}
 </style>

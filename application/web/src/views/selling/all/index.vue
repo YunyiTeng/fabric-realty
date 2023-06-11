@@ -17,7 +17,7 @@
       <el-col v-for="(val,index) in sellingList" :key="index" :span="6" :offset="1">
         <el-card class="all-card">
           <div slot="header" class="clearfix">
-            <span>{{ val.courseName }}</span>
+            <span>{{ val.SelleeCourseName }}</span>
             <el-button v-if="roles[0] !== 'admin'&&(val.seller===accountId||val.buyer===accountId)&&val.sellingStatus!=='完成'&&val.sellingStatus!=='已过期'&&val.sellingStatus!=='已取消'" style="float: right; padding: 3px 0" type="text" @click="updateSelling(val,'cancelled')">取消</el-button>
             <el-button v-if="roles[0] !== 'admin'&&val.seller===accountId&&val.sellingStatus==='交付中'" style="float: right; padding: 3px 8px" type="text" @click="updateSelling(val,'done')">确认收款</el-button>
             <!-- <el-button v-if="roles[0] !== 'admin'&&val.sellingStatus==='装逼中'&&val.seller!==accountId" style="float: right; padding: 3px 0" type="text" @click="createSellingByBuy(val)">购买</el-button> -->
@@ -36,11 +36,11 @@
           </div> -->
           <div class="item">
             <el-tag type="warning">课程学分: </el-tag>
-            <span>{{ val.totalArea }}</span>
+            <span>{{ val.SelleeTotalArea }}</span>
           </div>
           <div class="item">
             <el-tag type="danger">课程成绩: </el-tag>
-            <span>{{ val.livingSpace }}</span>
+            <span>{{ val.SelleeLivingSpace }}</span>
           </div>
           <div class="item">
             <el-tag type="info">有效期: </el-tag>
@@ -84,13 +84,15 @@ export default {
   created() {
     querySellingList().then(response => {
       if (response !== null) {
-        this.sellingList = response
+        this.sellingList = response;
+        console.log(this.sellingList); // 打印 sellingList 的值
       }
       this.loading = false
     }).catch(_ => {
       this.loading = false
     })
   },
+
   methods: {
     createSellingByBuy(item) {
       this.$confirm('是否立即购买?', '提示', {
