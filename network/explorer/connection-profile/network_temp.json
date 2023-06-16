@@ -8,7 +8,7 @@
       "password": "123456"
     },
     "enableAuthentication": true,
-    "organization": "TaobaoMSP",
+    "organization": "ZJU2MSP",
     "connection": {
       "timeout": {
         "peer": {
@@ -21,30 +21,30 @@
   "channels": {
     "appchannel": {
       "peers": {
-        "peer0.taobao.com": {}
+        "peer0.zjuwlan2.com": {}
       }
     }
   },
   "organizations": {
-    "TaobaoMSP": {
-      "mspid": "TaobaoMSP",
+    "ZJU2MSP": {
+      "mspid": "ZJU2MSP",
       "adminPrivateKey": {
-        "path": "/tmp/crypto/peerOrganizations/taobao.com/users/Admin@taobao.com/msp/keystore/priv_sk"
+        "path": "/tmp/crypto/peerOrganizations/zjuwlan2.com/users/Admin@zjuwlan2.com/msp/keystore/priv_sk"
       },
       "peers": [
-        "peer0.taobao.com"
+        "peer0.zjuwlan2.com"
       ],
       "signedCert": {
-        "path": "/tmp/crypto/peerOrganizations/taobao.com/users/Admin@taobao.com/msp/signcerts/Admin@taobao.com-cert.pem"
+        "path": "/tmp/crypto/peerOrganizations/zjuwlan2.com/users/Admin@zjuwlan2.com/msp/signcerts/Admin@zjuwlan2.com-cert.pem"
       }
     }
   },
   "peers": {
-    "peer0.taobao.com": {
+    "peer0.zjuwlan2.com": {
       "tlsCACerts": {
-        "path": "/tmp/crypto/peerOrganizations/taobao.com/peers/peer0.taobao.com/tls/ca.crt"
+        "path": "/tmp/crypto/peerOrganizations/zjuwlan2.com/peers/peer0.zjuwlan2.com/tls/ca.crt"
       },
-      "url": "grpc://peer0.taobao.com:7051"
+      "url": "grpc://peer0.zjuwlan2.com:7051"
     }
   }
 }

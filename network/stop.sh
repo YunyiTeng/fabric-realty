@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 清除链码容器
+echo '清除链码容器'
 function clearContainers() {
   CONTAINER_IDS=$(docker ps -a | awk '($2 ~ /dev-peer.*fabric-realty.*/) {print $1}')
   if [ -z "$CONTAINER_IDS" -o "$CONTAINER_IDS" == " " ]; then
@@ -10,7 +10,7 @@ function clearContainers() {
   fi
 }
 
-# 清除链码镜像
+echo '清除链码镜像'
 function removeUnwantedImages() {
   DOCKER_IMAGE_IDS=$(docker images | awk '($1 ~ /dev-peer.*fabric-realty.*/) {print $3}')
   if [ -z "$DOCKER_IMAGE_IDS" -o "$DOCKER_IMAGE_IDS" == " " ]; then
@@ -25,7 +25,7 @@ mkdir -p config
 mkdir -p crypto-config
 rm -rf config/*
 rm -rf crypto-config/*
-docker-compose down -v
-clearContainers
+docker-compose down -v --remove-orphans
+clearContainers 
 removeUnwantedImages
 echo "清理完毕"

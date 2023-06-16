@@ -1,24 +1,24 @@
 # 定义组织机构实体
 Organizations:
-  - &QQ
-    Name: QQ # 组织的名称
-    ID: QQMSP # 组织的 MSPID
-    MSPDir: crypto-config/ordererOrganizations/qq.com/msp #组织的证书相对位置（生成的crypto-config目录)
+  - &ZJU1
+    Name: ZJU1 # 组织的名称
+    ID: ZJU1MSP # 组织的 MSPID
+    MSPDir: crypto-config/ordererOrganizations/zjuwlan1.com/msp #组织的证书相对位置（生成的crypto-config目录)
 
-  - &Taobao
-    Name: Taobao
-    ID: TaobaoMSP
-    MSPDir: crypto-config/peerOrganizations/taobao.com/msp
+  - &ZJU2
+    Name: ZJU2
+    ID: ZJU2MSP
+    MSPDir: crypto-config/peerOrganizations/zjuwlan2.com/msp
     AnchorPeers: # 组织锚节点的配置
-      - Host: peer0.taobao.com
+      - Host: peer0.zjuwlan2.com
         Port: 7051
 
-  - &JD
-    Name: JD
-    ID: JDMSP
-    MSPDir: crypto-config/peerOrganizations/jd.com/msp
+  - &ZJU3
+    Name: ZJU3
+    ID: ZJU3MSP
+    MSPDir: crypto-config/peerOrganizations/zjuwlan3.com/msp
     AnchorPeers: # 组织锚节点的配置
-      - Host: peer0.jd.com
+      - Host: peer0.zjuwlan3.com
         Port: 7051
 
 # 定义了排序服务的相关参数，这些参数将用于创建创世区块
@@ -26,7 +26,7 @@ Orderer: &OrdererDefaults
   # 排序节点类型用来指定要启用的排序节点实现，不同的实现对应不同的共识算法
   OrdererType: solo # 共识机制
   Addresses: # Orderer 的域名（用于连接）
-    - orderer.qq.com:7050
+    - orderer.zjuwlan1.com:7050
   BatchTimeout: 2s # 出块时间间隔
   BatchSize: # 用于控制每个block的信息量
     MaxMessageCount: 10 #每个区块的消息个数
@@ -44,22 +44,22 @@ Application: &ApplicationDefaults
 Profiles:
   #  TwoOrgsOrdererGenesis配置文件用于创建系统通道创世块
   #  该配置文件创建一个名为SampleConsortium的联盟
-  #  该联盟在configtx.yaml文件中包含两个Peer组织Taobao和JD
+  #  该联盟在configtx.yaml文件中包含两个Peer组织ZJU2和ZJU3
   TwoOrgsOrdererGenesis:
     Orderer:
       <<: *OrdererDefaults
       Organizations:
-        - *QQ
+        - *ZJU1
     Consortiums:
       SampleConsortium:
         Organizations:
-          - *Taobao
-          - *JD
+          - *ZJU2
+          - *ZJU3
   # 使用TwoOrgsChannel配置文件创建应用程序通道
   TwoOrgsChannel:
     Consortium: SampleConsortium
     Application:
       <<: *ApplicationDefaults
       Organizations:
-        - *Taobao
-        - *JD
+        - *ZJU2
+        - *ZJU3

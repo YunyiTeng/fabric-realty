@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t fabric-realty.server .
+docker build --network host -t fabric-realty.server .
